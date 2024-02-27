@@ -10,8 +10,14 @@ const Home = () => {
     <div className=" font-bold text-xl flex justify-center items-center h-[100vh] w-[100vw] ">
         <div className="w-2/5  h-2/5 justify-center items-center flex flex-col" >
             Hi there its home page EasyMoneyTransfer web app
-            <Button name={"Signup"} type={"primary"} onClick={()=>navigate("signup")} />
-            <Button name={"Signin"} type={"primary"} onClick={()=>navigate("signin")} />
+            {localStorage.getItem("token")&& localStorage.getItem("token")!=""?
+              <Button name={"Dashboard"} type={"primary"} onClick={()=>navigate("dashboard")} />
+              :
+              <>
+                <Button name={"Signup"} type={"primary"} onClick={()=>navigate("signup")} />
+                <Button name={"Signin"} type={"primary"} onClick={()=>navigate("signin")} />
+              </>
+            }
         </div>
 
     </div>

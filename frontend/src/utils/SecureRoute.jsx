@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet,Navigate } from "react-router-dom"
 
-const SecureRoute = () => {
+const SecureDashboardRoute = () => {
     let auth=window.localStorage.getItem("token") && window.localStorage.getItem("token")!==""? window.localStorage.getItem("token"):null
         return(
             <>
@@ -10,4 +10,14 @@ const SecureRoute = () => {
         )
 }
 
-export default SecureRoute
+export const SecureAuthRoute=()=>{
+    let token=window.localStorage.getItem("token") && window.localStorage.getItem("token")!=""
+    return(
+        <>
+        {!token?<Outlet/>:<Navigate to="/dashboard"/>}
+        </>
+    )
+
+}
+
+export default SecureDashboardRoute
